@@ -52,6 +52,25 @@
             
   <div class="section" id="tools-for-real-time-green-s-functions">
 <h1>Tools for Real-Time Green&#8217;s Functions<a class="headerlink" href="#tools-for-real-time-green-s-functions" title="Permalink to this headline">¶</a></h1>
+<dl class="docutils">
+<dt><tt class="xref py py-func docutils literal"><span class="pre">rtgf.py()</span></tt>: Calculate the Density of States (DOS) values during a time propagation.</dt>
+<dd><p class="first">It makes the trace of time-dependent Green&#8217;s Functions calculated
+along a time propagation and return the DOS values as a function of time both for the real and for the imaginary part of the Green&#8217;s Function.</p>
+<blockquote>
+<div><p><tt class="xref py py-attr docutils literal"><span class="pre">Example</span> <span class="pre">:</span></tt></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">python</span> <span class="n">rtgf</span><span class="o">.</span><span class="n">py</span> <span class="n">prop_time</span> <span class="n">time_step</span> <span class="o">/</span><span class="n">PATH</span><span class="o">/</span><span class="n">scratch</span>
+</pre></div>
+</div>
+<p><tt class="xref py py-attr docutils literal"><span class="pre">prop_time</span></tt>: double value of the full propagation time (period).</p>
+<p><tt class="xref py py-attr docutils literal"><span class="pre">time_step</span></tt>: double value of the time-step.</p>
+<dl class="docutils">
+<dt><tt class="xref py py-attr docutils literal"><span class="pre">scratch</span></tt>: directory containing text files of the real (green.$t.$t.txt) and imaginary (green.30000+$t.30000+$t.txt) Green&#8217;s Functions,</dt>
+<dd>where $t indicate the specific time-step.</dd>
+</dl>
+</div></blockquote>
+<p class="last">The script save two output files, <tt class="xref py py-attr docutils literal"><span class="pre">rt_real.txt</span></tt> and <tt class="xref py py-attr docutils literal"><span class="pre">rt_imag.txt</span></tt>, containing the real and imaginary part of the time-dependent DOS respectively.</p>
+</dd>
+</dl>
 </div>
 
 

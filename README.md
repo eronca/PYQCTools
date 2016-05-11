@@ -13,4 +13,9 @@ Prerequisites
     - Python 2.6, 2.7, 3.2, 3.3, 3.4
     - Numpy 1.6.2 or higher
     - Scipy 0.10 or higher (0.12.0 or higher for python 3.3, 3.4)
-    - PySCF for Intergrals Calculation in Integrals Dumpings.
+    - `PySCF <https://github.com/sunqm/pyscf>`_ for Intergrals Calculation in Integrals Dumpings.
+
+Documentation
+--------------
+
+Documentation is available at: http://eronca.github.io/PYQCTools

@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Welcome to PYQCTools’s documentation! &mdash; PYQCTools 1.0 documentation</title>
+    <title>Python Tools for Omega Space Green’s Functions &mdash; PYQCTools 1.0 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -24,8 +24,8 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="top" title="PYQCTools 1.0 documentation" href="#" />
-    <link rel="next" title="Python Tools for Omega Space Green’s Functions" href="omegagf.html" /> 
+    <link rel="top" title="PYQCTools 1.0 documentation" href="index.html" />
+    <link rel="prev" title="Welcome to PYQCTools’s documentation!" href="index.html" /> 
   </head>
   <body>
     <div class="related">
@@ -35,9 +35,9 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="omegagf.html" title="Python Tools for Omega Space Green’s Functions"
-             accesskey="N">next</a> |</li>
-        <li><a href="#">PYQCTools 1.0 documentation</a> &raquo;</li> 
+          <a href="index.html" title="Welcome to PYQCTools’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">PYQCTools 1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -46,25 +46,19 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="welcome-to-pyqctools-s-documentation">
-<h1>Welcome to PYQCTools&#8217;s documentation!<a class="headerlink" href="#welcome-to-pyqctools-s-documentation" title="Permalink to this headline">¶</a></h1>
-<p>PYQCTools is a collection of python scripts useful to dump quantum chemistry integrals and to
-perform data post-processing for different quantum chemistry methods.</p>
-<p>PYQCTools requires the following prerequisites to work:</p>
-<ul class="simple">
-<li>Python 2.6, 2.7, 3.2, 3.3, 3.4</li>
-<li>Numpy 1.6.2 or higher</li>
-<li>Scipy 0.10 or higher (0.12.0 or higher for python 3.3, 3.4)</li>
-<li>PySCF for Intergrals Calculation in Integrals Dumpings.</li>
-</ul>
-<div class="section" id="contents">
-<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="omegagf.html">Python Tools for Omega Space Green&#8217;s Functions</a></li>
-</ul>
+  <div class="section" id="python-tools-for-omega-space-green-s-functions">
+<h1>Python Tools for Omega Space Green&#8217;s Functions<a class="headerlink" href="#python-tools-for-omega-space-green-s-functions" title="Permalink to this headline">¶</a></h1>
+<dl class="docutils">
+<dt><tt class="xref py py-func docutils literal"><span class="pre">gf_trace.py()</span></tt>: Calculate the Density of States (DOS) value from an <span class="math">\(\omega\)</span>-dependent Green&#8217;s Function.</dt>
+<dd><p class="first">It makes the trace of the Green&#8217;s Function associated with a certain frequency value.</p>
+<p><tt class="xref py py-attr docutils literal"><span class="pre">Example</span> <span class="pre">:</span></tt></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">python</span> <span class="n">gf_trace</span><span class="o">.</span><span class="n">py</span> <span class="o">/</span><span class="n">PATH</span><span class="o">/</span><span class="n">green</span><span class="o">.</span><span class="n">txt</span> <span class="n">omega_value</span>
+</pre></div>
 </div>
-</div>
+<p class="last"><tt class="xref py py-attr docutils literal"><span class="pre">green.txt</span></tt>: formatted text file containing the Green&#8217;s function.
+<tt class="xref py py-attr docutils literal"><span class="pre">omega_value</span></tt>: double frequency value.</p>
+</dd>
+</dl>
 </div>
 
 
@@ -73,20 +67,12 @@ perform data post-processing for different quantum chemistry methods.</p>
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="#">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Welcome to PYQCTools&#8217;s documentation!</a><ul>
-<li><a class="reference internal" href="#contents">Contents</a></li>
-</ul>
-</li>
-</ul>
-
-  <h4>Next topic</h4>
-  <p class="topless"><a href="omegagf.html"
-                        title="next chapter">Python Tools for Omega Space Green&#8217;s Functions</a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to PYQCTools&#8217;s documentation!</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="_sources/index.txt"
+    <li><a href="_sources/omegagf.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
@@ -113,9 +99,9 @@ perform data post-processing for different quantum chemistry methods.</p>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="omegagf.html" title="Python Tools for Omega Space Green’s Functions"
-             >next</a> |</li>
-        <li><a href="#">PYQCTools 1.0 documentation</a> &raquo;</li> 
+          <a href="index.html" title="Welcome to PYQCTools’s documentation!"
+             >previous</a> |</li>
+        <li><a href="index.html">PYQCTools 1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

@@ -22,3 +22,5 @@ Contents
 
 .. toctree::
    :maxdepth: 2
+
+   omegagf.rst

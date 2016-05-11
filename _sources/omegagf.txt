@@ -1,4 +1,4 @@
-Python Tools for Omega Space Green's Functions
+Tools for Omega Space Green's Functions
 ==============================================
 
 :func:`gf_trace.py`: Calculate the Density of States (DOS) value from an :math:`\omega`-dependent Green's Function. 

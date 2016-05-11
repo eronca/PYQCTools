@@ -24,3 +24,5 @@ Contents
    :maxdepth: 2
 
    omegagf.rst
+   rtgf.rst
+   integralsdump.rst

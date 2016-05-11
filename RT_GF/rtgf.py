@@ -22,13 +22,14 @@ if __name__=="__main__":
 
     prop_time = float(sys.argv[1])
     time_step = float(sys.argv[2])
+    green_dir = sys.argv[3]
 
     steps_num = int(prop_time/time_step)
 
     with open('rt_real.txt', 'a') as fout:
          fout.write('#     Time          A(Time)\n')
 
-    real_files = './scratch_orb0/green.%d.%d.txt' % (0,0)
+    real_files = green_dir+'/green.%d.%d.txt' % (0,0)
     run(real_files, 0.0, True)
 
     with open('rt_imag.txt', 'a') as fout:
@@ -37,8 +38,8 @@ if __name__=="__main__":
 
     time = time_step
     for itime in range(1, steps_num+1):
-        real_files = './scratch_orb0/green.%d.%d.txt' % (itime,itime)
-        imag_files = './scratch_orb0/green.%d.%d.txt' % (30000+itime,30000+itime)
+        real_files = green_dir+'/green.%d.%d.txt' % (itime,itime)
+        imag_files = green_dir+'/green.%d.%d.txt' % (30000+itime,30000+itime)
 
         real = True
         run(real_files, time, real)

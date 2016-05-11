@@ -27,4 +27,4 @@ Contents
    rtgf.rst
    integralsdump.rst
 
-You can also download the [PDF version](https://github.com/eronca/PYQCTools/blob/gh-pages/latex/PYQCTools.pdf) of this manual.
+You can also download the `PDF version <https://github.com/eronca/PYQCTools/blob/gh-pages/latex/PYQCTools.pdf>`_ of this manual.

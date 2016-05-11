@@ -14,7 +14,7 @@ PYQCTools requires the following prerequisites to work:
 * Python 2.6, 2.7, 3.2, 3.3, 3.4
 * Numpy 1.6.2 or higher
 * Scipy 0.10 or higher (0.12.0 or higher for python 3.3, 3.4)
-* PySCF for Intergrals Calculation in Integrals Dumpings.
+* `PySCF <https://github.com/sunqm/pyscf>` for Integrals Calculation in Integrals Dumpings scripts.
 
 
 Contents
@@ -27,4 +27,4 @@ Contents
    rtgf.rst
    integralsdump.rst
 
-You can also download the [PDF version](https://raw.github.com/eronca/PYQCTools/gh-pages/latex/PYQCTools.pdf) of this manual.
+You can also download the `PDF version <https://raw.github.com/eronca/PYQCTools/gh-pages/latex/PYQCTools.pdf>` of this manual.

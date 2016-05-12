@@ -14,7 +14,7 @@
 
 
 \title{PYQCTools Documentation}
-\date{May 11, 2016}
+\date{May 12, 2016}
 \release{1.0}
 \author{Enrico Ronca}
 \newcommand{\sphinxlogo}{}
@@ -138,7 +138,7 @@ Numpy 1.6.2 or higher
 Scipy 0.10 or higher (0.12.0 or higher for python 3.3, 3.4)
 
 \item {} 
-PySCF for Intergrals Calculation in Integrals Dumpings.
+\href{https://github.com/sunqm/pyscf}{PySCF} for Integrals Calculation in Integrals Dumpings scripts.
 
 \end{itemize}
 
@@ -148,26 +148,51 @@ PySCF for Intergrals Calculation in Integrals Dumpings.
 
 \section{Tools for Omega Space Green's Functions}
 \label{omegagf:tools-for-omega-space-green-s-functions}\label{omegagf::doc}\begin{description}
-\item[{\code{gf\_trace.py()}: Calculate the Density of States (DOS) value from an \(\omega\)-dependent Green's Function.}] \leavevmode
+\item[{\code{gf\_trace.py}: Calculate the Density of States (DOS) value from an \(\omega\)-dependent Green's Function.}] \leavevmode
 It makes the trace of the Green's Function associated with a certain frequency value.
 
-\code{Example :}
+\textbf{Example :}
 
 \begin{Verbatim}[commandchars=\\\{\}]
 \PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{python} \PYG{n}{gf\PYGZus{}trace}\PYG{o}{.}\PYG{n}{py} \PYG{o}{/}\PYG{n}{PATH}\PYG{o}{/}\PYG{n}{green}\PYG{o}{.}\PYG{n}{txt} \PYG{n}{omega\PYGZus{}value}
 \end{Verbatim}
 
 \code{green.txt}: formatted text file containing the Green's function.
+
 \code{omega\_value}: double frequency value.
 
 \end{description}
 
 
 \section{Tools for Real-Time Green's Functions}
-\label{rtgf::doc}\label{rtgf:tools-for-real-time-green-s-functions}
+\label{rtgf::doc}\label{rtgf:tools-for-real-time-green-s-functions}\begin{description}
+\item[{\code{rtgf.py}: Calculate the Density of States (DOS) values during a time propagation.}] \leavevmode
+It makes the trace of time-dependent Green's Functions calculated
+along a time propagation and return the DOS values as a function of time both for the real and for the imaginary part of the Green's Function.
+\begin{quote}
+
+\textbf{Example :}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{python} \PYG{n}{rtgf}\PYG{o}{.}\PYG{n}{py} \PYG{n}{prop\PYGZus{}time} \PYG{n}{time\PYGZus{}step} \PYG{o}{/}\PYG{n}{PATH}\PYG{o}{/}\PYG{n}{scratch}
+\end{Verbatim}
+
+\code{prop\_time}: double value of the full propagation time (period).
+
+\code{time\_step}: double value of the time-step.
+
+\code{scratch}: directory containing text files of the real (green.\$t.\$t.txt) and imaginary (green.30000+\$t.30000+\$t.txt) Green's Functions, where \$t indicate the specific time-step.
+\end{quote}
+
+The script save two output files, \code{rt\_real.txt} and \code{rt\_imag.txt}, containing the real and imaginary part of the time-dependent DOS respectively.
+
+\end{description}
+
 
 \section{Tools for Integrals Dumping}
 \label{integralsdump:tools-for-integrals-dumping}\label{integralsdump::doc}
+You can also download the \href{https://raw.github.com/eronca/PYQCTools/gh-pages/latex/PYQCTools.pdf}{PDF version} of this manual.
+
 
 
 \renewcommand{\indexname}{Index}

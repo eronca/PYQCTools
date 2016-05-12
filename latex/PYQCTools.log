@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2016.5.11)  11 MAY 2016 07:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2016.5.11)  12 MAY 2016 04:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -938,32 +938,33 @@ File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
 LaTeX Font Info:    Font shape `T1/pcr/bx/n' in size <10> not available
 (Font)              Font shape `T1/pcr/b/n' tried instead on input line 151.
-
-Underfull \hbox (badness 10000) in paragraph at lines 151--153
-[]\T1/ptm/m/n/10 It
- []
-
 LaTeX Font Info:    Font shape `T1/pcr/bx/n' in size <9> not available
 (Font)              Font shape `T1/pcr/b/n' tried instead on input line 157.
+
+Underfull \hbox (badness 6842) in paragraph at lines 184--185
+[]\T1/pcr/m/n/10 scratch\T1/ptm/m/n/10 : di-rec-tory con-tain-ing text files of
+ the real (green.$t.$t.txt) and imag-i-nary
+ []
+
 (./PYQCTools.ind)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 175.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 200.
  [3]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 175.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 200.
  (./PYQCTools.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 175.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 175.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 200.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 200.
 Package rerunfilecheck Info: File `PYQCTools.out' has not changed.
 (rerunfilecheck)             Checksum: 1636F5E318AD6A755061326164849FE1;284.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 175.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 200.
  ) 
 Here is how much of TeX's memory you used:
  9074 strings out of 495025
  125936 string characters out of 6181515
- 219637 words of memory out of 5000000
+ 221637 words of memory out of 5000000
  12038 multiletter control sequences out of 15000+600000
  54088 words of font info for 63 fonts, out of 8000000 for 9000
  15 hyphenation exceptions out of 8191
- 36i,11n,45p,251b,400s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,11n,45p,251b,409s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr/share/texlive/texmf-dist/fonts/
@@ -971,10 +972,10 @@ type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/hel
 vetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8
 a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on PYQCTools.pdf (7 pages, 73240 bytes).
+Output written on PYQCTools.pdf (7 pages, 74985 bytes).
 PDF statistics:
- 96 PDF objects out of 1000 (max. 8388607)
- 77 compressed objects within 1 object stream
+ 98 PDF objects out of 1000 (max. 8388607)
+ 79 compressed objects within 1 object stream
  14 named destinations out of 1000 (max. 500000)
  41 words of extra memory for PDF output out of 10000 (max. 10000000)
 

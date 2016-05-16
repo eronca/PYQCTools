@@ -5,7 +5,7 @@ import os
 import numpy as np
 from scipy import fft, arange
 
-def run_fft(real_RTGF, imag_RTGF, eta):
+def run_fft(real_RTGF, imag_RTGF, eta, rem_add):
     time_array = real_RTGF.transpose()[0]
     npoints = time_array.shape[0]
     delta_t = time_array[1]
@@ -15,7 +15,14 @@ def run_fft(real_RTGF, imag_RTGF, eta):
 
     real_part = real_RTGF.transpose()[1]
     imag_part = imag_RTGF.transpose()[1]
-    fftinp = 1j*(real_part + 1j*imag_part)
+
+    if (rem_add == 'rem'):
+       fftinp = 1j*(real_part + 1j*imag_part)
+    elif (rem_add == 'add'):
+       fftinp = 1j*(real_part - 1j*imag_part)
+    else:
+       print 'Addition or Removal has not been specified!'
+       return
 
     for i in range(npoints):
         fftinp[i] = fftinp[i]*np.exp(-eta*time_array[i])
@@ -48,5 +55,6 @@ if __name__=="__main__":
     imag_RTGF = np.loadtxt("rt_imag.txt")
 
     eta = float(sys.argv[1])
+    rem_add = sys.argv[2]
    
-    run_fft(real_RTGF, imag_RTGF, eta)
+    run_fft(real_RTGF, imag_RTGF, eta, rem_add)

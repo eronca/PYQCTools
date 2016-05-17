@@ -37,10 +37,10 @@ Tools for Real-Time Green's Functions
 
                      :attr:`full_range`: boolean variable. If it is true is return the full range of calculated and predicted values, if it is false it returns only the predicted values.
 
-                 The script :attr:`new_full_data.out` files if full_range = true otherwise it produces :attr:`predicted.out` output files.
+                 The script produces :attr:`new_full_data.out` files if full_range = true otherwise it produces :attr:`predicted.out` output files.
 
 :attr:`iter_extrapolation.py`: Perform an interative linear prediction to extend the total propagation time of a time propagation.
-                          It reads 4 points of the time-dependent DOS inside the files :attr:`rt_real.txt` and :attr:`rt_imag.txt` and use the last 2 of them to predict the following N points.
+                               It reads 4 points of the time-dependent DOS inside the files :attr:`rt_real.txt` and :attr:`rt_imag.txt` and use the last 2 of them to predict the following N points.
 
                      **Example :**
 
@@ -48,4 +48,4 @@ Tools for Real-Time Green's Functions
 
                      :attr:`N`: integer variable specifying the total number of points that need to be predicted.
 
-                 The script :attr:`new_full_real.out` and :attr:`new_full_imag.out` output files with the real and imaginary parts of the exteded time-dependent DOS respectively.
+                 The script produces :attr:`new_full_real.out` and :attr:`new_full_imag.out` output files with the real and imaginary parts of the exteded time-dependent DOS respectively.

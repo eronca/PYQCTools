@@ -27,3 +27,25 @@ Tools for Real-Time Green's Functions
                      :attr:`broad`: double value of the imaginary broadening.
 
                      :attr:`rem_add`: string specifying if we are working with the addition or removal part of the Green's Function. It can assume only the values 'add' or 'rem'.
+
+:attr:`extrapolation.py`: Perform linear prediction to extend the total propagation time of a time propagation.
+                          It reads N points of time-dependent DOS inside the files :attr:`rt_real.txt` and :attr:`rt_imag.txt` and use the last N/2 data to predict the following N points.
+
+                     **Example :**
+
+                     >>> python extrapolation.py full_range
+
+                     :attr:`full_range`: boolean variable. If it is true is return the full range of calculated and predicted values, if it is false it returns only the predicted values.
+
+                 The script :attr:`new_full_data.out` files if full_range = true otherwise it produces :attr:`predicted.out` output files.
+
+:attr:`iter_extrapolation.py`: Perform an interative linear prediction to extend the total propagation time of a time propagation.
+                          It reads 4 points of the time-dependent DOS inside the files :attr:`rt_real.txt` and :attr:`rt_imag.txt` and use the last 2 of them to predict the following N points.
+
+                     **Example :**
+
+                     >>> python extrapolation.py N
+
+                     :attr:`N`: integer variable specifying the total number of points that need to be predicted.
+
+                 The script :attr:`new_full_real.out` and :attr:`new_full_imag.out` output files with the real and imaginary parts of the exteded time-dependent DOS respectively.

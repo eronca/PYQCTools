@@ -78,6 +78,30 @@ along a time propagation and return the DOS values as a function of time both fo
 <p><tt class="xref py py-attr docutils literal"><span class="pre">rem_add</span></tt>: string specifying if we are working with the addition or removal part of the Green&#8217;s Function. It can assume only the values &#8216;add&#8217; or &#8216;rem&#8217;.</p>
 </div></blockquote>
 </dd>
+<dt><tt class="xref py py-attr docutils literal"><span class="pre">extrapolation.py</span></tt>: Perform linear prediction to extend the total propagation time of a time propagation.</dt>
+<dd><blockquote class="first">
+<div><blockquote>
+<div>It reads N points of time-dependent DOS inside the files <tt class="xref py py-attr docutils literal"><span class="pre">rt_real.txt</span></tt> and <tt class="xref py py-attr docutils literal"><span class="pre">rt_imag.txt</span></tt> and use the last N/2 data to predict the following N points.</div></blockquote>
+<p><strong>Example :</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">python</span> <span class="n">extrapolation</span><span class="o">.</span><span class="n">py</span> <span class="n">full_range</span>
+</pre></div>
+</div>
+<p><tt class="xref py py-attr docutils literal"><span class="pre">full_range</span></tt>: boolean variable. If it is true is return the full range of calculated and predicted values, if it is false it returns only the predicted values.</p>
+</div></blockquote>
+<p class="last">The script <tt class="xref py py-attr docutils literal"><span class="pre">new_full_data.out</span></tt> files if full_range = true otherwise it produces <tt class="xref py py-attr docutils literal"><span class="pre">predicted.out</span></tt> output files.</p>
+</dd>
+<dt><tt class="xref py py-attr docutils literal"><span class="pre">iter_extrapolation.py</span></tt>: Perform an interative linear prediction to extend the total propagation time of a time propagation.</dt>
+<dd><blockquote class="first">
+<div><blockquote>
+<div>It reads 4 points of the time-dependent DOS inside the files <tt class="xref py py-attr docutils literal"><span class="pre">rt_real.txt</span></tt> and <tt class="xref py py-attr docutils literal"><span class="pre">rt_imag.txt</span></tt> and use the last 2 of them to predict the following N points.</div></blockquote>
+<p><strong>Example :</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">python</span> <span class="n">extrapolation</span><span class="o">.</span><span class="n">py</span> <span class="n">N</span>
+</pre></div>
+</div>
+<p><tt class="xref py py-attr docutils literal"><span class="pre">N</span></tt>: integer variable specifying the total number of points that need to be predicted.</p>
+</div></blockquote>
+<p class="last">The script <tt class="xref py py-attr docutils literal"><span class="pre">new_full_real.out</span></tt> and <tt class="xref py py-attr docutils literal"><span class="pre">new_full_imag.out</span></tt> output files with the real and imaginary parts of the exteded time-dependent DOS respectively.</p>
+</dd>
 </dl>
 </div>
 

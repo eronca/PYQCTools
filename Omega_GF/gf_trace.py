@@ -1,4 +1,7 @@
-#!/usr/bin/python                                                                                                                                             \
+#!/usr/bin/env python
+#
+# Author: Enrico Ronca <enrico.r8729@gmail.com>
+#                                                                                                                                    \
 
 
 import os

@@ -1,4 +1,8 @@
 #!/usr/bin/env python
+#
+# Author: Enrico Ronca <enrico.r8729@gmail.com>
+#
+
 import numpy
 
 IRREP_MAP = {'D2h': (1,         # Ag

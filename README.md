@@ -15,6 +15,14 @@ Prerequisites
 - Scipy 0.10 or higher (0.12.0 or higher for python 3.3, 3.4)
 - [PySCF](https://github.com/sunqm/pyscf) for Integrals Calculation in Integrals Dumping scripts.
 
+Installation
+--------------
+
+To make python be able to find PYQCTools, edit environment variable `PYTHONPATH`, 
+e.g. if pyscf is installed in /opt/PYQCTools::
+
+     export PYTHONPATH=/opt:$PYTHONPATH
+
 Documentation
 --------------
 

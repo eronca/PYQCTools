@@ -19,7 +19,7 @@ Installation
 --------------
 
 To make python be able to find PYQCTools, edit environment variable `PYTHONPATH`, 
-e.g. if pyscf is installed in /opt/PYQCTools::
+e.g. if pyscf is installed in /opt/PYQCTools:
 
      export PYTHONPATH=/opt:$PYTHONPATH
 

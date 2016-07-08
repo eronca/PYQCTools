@@ -8,7 +8,11 @@ import os
 import numpy as np
 from scipy import fft, arange
 
-def run_fft(real_RTGF, imag_RTGF, eta, rem_add):
+def run(eta, rem_add):
+
+    real_RTGF = np.loadtxt("rt_real.txt") 
+    imag_RTGF = np.loadtxt("rt_imag.txt")
+
     time_array = real_RTGF.transpose()[0]
     npoints = time_array.shape[0]
     delta_t = time_array[1]
@@ -54,10 +58,7 @@ def run_fft(real_RTGF, imag_RTGF, eta, rem_add):
 if __name__=="__main__":
     import sys, math
    
-    real_RTGF = np.loadtxt("rt_real.txt") 
-    imag_RTGF = np.loadtxt("rt_imag.txt")
-
     eta = float(sys.argv[1])
     rem_add = sys.argv[2]
    
-    run_fft(real_RTGF, imag_RTGF, eta, rem_add)
+    run(eta, rem_add)

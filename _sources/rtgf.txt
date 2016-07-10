@@ -28,6 +28,18 @@ Tools for Real-Time Green's Functions
                      :attr:`broad`: double value of the imaginary broadening,
                      :attr:`rem_add`: string specifying if we are working with the addition or removal part of the Green's Function. It can assume only the values 'add' or 'rem'.
 
+:attr:`rt1rdm_builder.py`: Build the Real and Imaginary parts of a Real-Time 1RDM at very time step starting from DMRG data calculated by the Block Code. 
+                 It opportunely combines the 1RDM components read from files :attr:`green.$t.$t.txt` where :attr:`$t` is of the order of 1,2,3,..., 100001,10002,100003,... and 200001,200002,200003,... for the Real-Real, Imag-Real and Imag-Imag respectively. 
+
+                     **Example**::
+
+                       from PYQCTools.RT_GF import rt1rdm_builder           
+
+                       rt1rdm_builder.run(prop_time, time_step, scratch)
+
+                     :attr:`prop_time`: double value of the full propagation time (period), :attr:`time_step`: double value of the time-step,
+                     :attr:`scratch`: directory containing text files of the 1RDM components at every time-step.
+
 :attr:`extrapolation.py`: Perform linear prediction to extend the total propagation time of a time propagation.
                           It reads N points of time-dependent DOS inside the files :attr:`rt_real.txt` and :attr:`rt_imag.txt` and use the last N/2 data to predict the following N points.
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2016.5.11)  7 JUL 2016 16:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2016.5.11)  10 JUL 2016 14:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -946,44 +946,49 @@ Underfull \hbox (badness 10000) in paragraph at lines 188--190
  []
 
 [3]
-Overfull \hbox (85.60124pt too wide) in paragraph at lines 223--223
+Overfull \hbox (209.54997pt too wide) in paragraph at lines 204--206
 []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 223--223
-
- []
-
-
-Overfull \hbox (47.9608pt too wide) in paragraph at lines 247--249
+Overfull \hbox (85.60124pt too wide) in paragraph at lines 239--239
 []
  []
 
 
-Overfull \hbox (29.15123pt too wide) in paragraph at lines 250--252
+Underfull \hbox (badness 10000) in paragraph at lines 239--239
+
+ []
+
+
+Overfull \hbox (47.9608pt too wide) in paragraph at lines 263--265
 []
  []
 
 
-Overfull \hbox (192.6598pt too wide) in paragraph at lines 253--255
+Overfull \hbox (29.15123pt too wide) in paragraph at lines 266--268
 []
  []
 
-(./PYQCTools.ind)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 278.
- [4]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 278.
+
+Overfull \hbox (192.6598pt too wide) in paragraph at lines 269--271
+[]
+ []
+
+[4] (./PYQCTools.ind)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 294.
+ [5]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 294.
  (./PYQCTools.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 278.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 278.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 294.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 294.
 Package rerunfilecheck Info: File `PYQCTools.out' has not changed.
 (rerunfilecheck)             Checksum: 1636F5E318AD6A755061326164849FE1;284.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 278.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 294.
  ) 
 Here is how much of TeX's memory you used:
- 9076 strings out of 495025
- 125949 string characters out of 6181515
+ 9077 strings out of 495025
+ 125955 string characters out of 6181515
  223638 words of memory out of 5000000
  12038 multiletter control sequences out of 15000+600000
  55224 words of font info for 64 fonts, out of 8000000 for 9000
@@ -997,10 +1002,10 @@ vetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8
 a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on PYQCTools.pdf (8 pages, 90907 bytes).
+Output written on PYQCTools.pdf (9 pages, 94410 bytes).
 PDF statistics:
- 106 PDF objects out of 1000 (max. 8388607)
- 85 compressed objects within 1 object stream
- 15 named destinations out of 1000 (max. 500000)
+ 110 PDF objects out of 1000 (max. 8388607)
+ 88 compressed objects within 1 object stream
+ 16 named destinations out of 1000 (max. 500000)
  41 words of extra memory for PDF output out of 10000 (max. 10000000)
 

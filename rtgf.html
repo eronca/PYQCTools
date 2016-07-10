@@ -81,6 +81,19 @@ along a time propagation and return the DOS values as a function of time both fo
 <tt class="xref py py-attr docutils literal"><span class="pre">rem_add</span></tt>: string specifying if we are working with the addition or removal part of the Green&#8217;s Function. It can assume only the values &#8216;add&#8217; or &#8216;rem&#8217;.</p>
 </div></blockquote>
 </dd>
+<dt><tt class="xref py py-attr docutils literal"><span class="pre">rt1rdm_builder.py</span></tt>: Build the Real and Imaginary parts of a Real-Time 1RDM at very time step starting from DMRG data calculated by the Block Code.</dt>
+<dd><p class="first">It opportunely combines the 1RDM components read from files <tt class="xref py py-attr docutils literal"><span class="pre">green.$t.$t.txt</span></tt> where <tt class="xref py py-attr docutils literal"><span class="pre">$t</span></tt> is of the order of 1,2,3,..., 100001,10002,100003,... and 200001,200002,200003,... for the Real-Real, Imag-Real and Imag-Imag respectively.</p>
+<blockquote class="last">
+<div><p><strong>Example</strong>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PYQCTools.RT_GF</span> <span class="kn">import</span> <span class="n">rt1rdm_builder</span>
+
+<span class="n">rt1rdm_builder</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">prop_time</span><span class="p">,</span> <span class="n">time_step</span><span class="p">,</span> <span class="n">scratch</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><tt class="xref py py-attr docutils literal"><span class="pre">prop_time</span></tt>: double value of the full propagation time (period), <tt class="xref py py-attr docutils literal"><span class="pre">time_step</span></tt>: double value of the time-step,
+<tt class="xref py py-attr docutils literal"><span class="pre">scratch</span></tt>: directory containing text files of the 1RDM components at every time-step.</p>
+</div></blockquote>
+</dd>
 <dt><tt class="xref py py-attr docutils literal"><span class="pre">extrapolation.py</span></tt>: Perform linear prediction to extend the total propagation time of a time propagation.</dt>
 <dd><blockquote class="first">
 <div><blockquote>

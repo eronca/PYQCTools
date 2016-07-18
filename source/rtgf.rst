@@ -28,8 +28,8 @@ Tools for Real-Time Green's Functions
                      :attr:`broad`: double value of the imaginary broadening,
                      :attr:`rem_add`: string specifying if we are working with the addition or removal part of the Green's Function. It can assume only the values 'add' or 'rem'.
 
-:attr:`rt1rdm_builder.py`: Build the Real and Imaginary parts of a Real-Time 1RDM at very time step starting from DMRG data calculated by the Block Code. 
-                 It opportunely combines the 1RDM components read from files :attr:`green.$t.$t.txt` where :attr:`$t` is of the order of 1,2,3,..., 100001,10002,100003,... and 200001,200002,200003,... for the Real-Real, Imag-Real and Imag-Imag respectively. 
+:attr:`rt1rdm_builder.py`: Build the Real and Imaginary parts of a Real-Time 1RDM at every time step starting from DMRG data calculated by the Block Code. 
+                 It opportunely combines the 1RDM components read from files :attr:`onepdm.$t.$t.txt` where :attr:`$t` is of the order of 1,2,3,..., 100001,10002,100003,... and 200001,200002,200003,... for the Real-Real, Imag-Real and Imag-Imag respectively. 
 
                      **Example**::
 

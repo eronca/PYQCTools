@@ -45,11 +45,12 @@ def run(tot_t, delta_t, scratch):
   #Calculate and save 1RDM at the following times
   for nt in range(1,nsteps+1):
     ReRe_1rdm = read_input(scratch+input_name(nt))
-    ImRe_1rdm = read_input(scratch+input_name(nt+100000))
-    ImIm_1rdm = read_input(scratch+input_name(nt+200000))
+    ReIm_1rdm = read_input(scratch+input_name(nt+100000))
+    ImRe_1rdm = read_input(scratch+input_name(nt+200000))
+    ImIm_1rdm = read_input(scratch+input_name(nt+300000))
 
-    Re_1rdm = ReRe_1rdm - ImIm_1rdm
-    Im_1rdm = 2.0*ImRe_1rdm
+    Re_1rdm = ReRe_1rdm + ImIm_1rdm
+    Im_1rdm = ReIm_1rdm - ImRe_1rdm
 
     np.savetxt(output_name(nt,'Re',delta_t),Re_1rdm,fmt='%10.5f')
     np.savetxt(output_name(nt,'Im',delta_t),Im_1rdm,fmt='%10.5f')

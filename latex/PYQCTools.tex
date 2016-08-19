@@ -14,7 +14,7 @@
 
 
 \title{PYQCTools Documentation}
-\date{July 17, 2016}
+\date{August 19, 2016}
 \release{1.0}
 \author{Enrico Ronca}
 \newcommand{\sphinxlogo}{}
@@ -261,13 +261,13 @@ The script produces \code{new\_full\_real.out} and \code{new\_full\_imag.out} ou
 \section{Tools for Integrals Dumping}
 \label{integralsdump:tools-for-integrals-dumping}\label{integralsdump::doc}\begin{description}
 \item[{\code{Integrals\_dump.py}: It dumps 1 and 2-elctron integrals in the MO basis inside a CASCI space in FCIDUMP format.}] \leavevmode
-The PySCF input to calculate integrals is already included in the script.
+The PySCF input to calculate the integrals is already included in the script.
 
 \item[{\code{DipoleIntegrals\_dump.py}: It dumps dipole integrals in the MO basis in a CASCI space in FCIDUMP format.}] \leavevmode
-The PySCF input to calculate integrals is already included in the script.
+The PySCF input to calculate the integrals is already included in the script.
 
 \item[{\code{LowdinOrtho\_Integrals.py}: It dumps 1 and 2-electron integrals in the Localized basis obtained by Lowdin Orthogonalization in FCIDUMP format.}] \leavevmode
-The PySCF input to calculate integrals is already included in the script.
+The PySCF input to calculate the integrals is already included in the script.
 
 \end{description}
 
@@ -279,11 +279,17 @@ The PySCF input to calculate integrals is already included in the script.
 \begin{Verbatim}[commandchars=\\\{\}]
 \PYG{k+kn}{from} \PYG{n+nn}{PYQCTools.Integrals\PYGZus{}dump} \PYG{k+kn}{import} \PYG{n}{hubbard\PYGZus{}1d}
 
-\PYG{n}{hubbard\PYGZus{}1d}\PYG{o}{.}\PYG{n}{run}\PYG{p}{(}\PYG{n}{nsites}\PYG{p}{,} \PYG{n}{t}\PYG{p}{,} \PYG{n}{U}\PYG{p}{,} \PYG{n}{output}\PYG{p}{)}
+\PYG{n}{hubbard\PYGZus{}1d}\PYG{o}{.}\PYG{n}{run}\PYG{p}{(}\PYG{n}{nsites}\PYG{p}{,} \PYG{n}{t}\PYG{p}{,} \PYG{n}{U}\PYG{p}{,} \PYG{n}{output}\PYG{p}{,} \PYG{n}{pbc}\PYG{p}{)}
 \end{Verbatim}
 
-\code{nsites}: Number of sites, \code{t}: Hopping constant, \code{U}: Coupling constant, \code{output}: Output file name.
+\code{nsites}: Number of sites, \code{t}: Hopping constant, \code{U}: Coupling constant, \code{output}: Output file name, \code{pbc}: `True' of `False' respectively if periodic boudary conditions need to be included or not.
 \end{quote}
+\begin{description}
+\item[{\code{MPSPT\_integrals.py}: It dumps the DYALL and PERTURB files to run NEVPT2 calculations by MPS-PT using the BLOCK Code for DMRG.}] \leavevmode
+Integrals are dumped in FCIDUMP format.
+The PySCF input to calculate the integrals is already included in the script.
+
+\end{description}
 
 You can also download the \href{https://raw.github.com/eronca/PYQCTools/gh-pages/latex/PYQCTools.pdf}{PDF version} of this manual.
 

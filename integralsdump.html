@@ -50,22 +50,27 @@
 <h1>Tools for Integrals Dumping<a class="headerlink" href="#tools-for-integrals-dumping" title="Permalink to this headline">¶</a></h1>
 <dl class="docutils">
 <dt><tt class="xref py py-attr docutils literal"><span class="pre">Integrals_dump.py</span></tt>: It dumps 1 and 2-elctron integrals in the MO basis inside a CASCI space in FCIDUMP format.</dt>
-<dd>The PySCF input to calculate integrals is already included in the script.</dd>
+<dd>The PySCF input to calculate the integrals is already included in the script.</dd>
 <dt><tt class="xref py py-attr docutils literal"><span class="pre">DipoleIntegrals_dump.py</span></tt>: It dumps dipole integrals in the MO basis in a CASCI space in FCIDUMP format.</dt>
-<dd>The PySCF input to calculate integrals is already included in the script.</dd>
+<dd>The PySCF input to calculate the integrals is already included in the script.</dd>
 <dt><tt class="xref py py-attr docutils literal"><span class="pre">LowdinOrtho_Integrals.py</span></tt>: It dumps 1 and 2-electron integrals in the Localized basis obtained by Lowdin Orthogonalization in FCIDUMP format.</dt>
-<dd>The PySCF input to calculate integrals is already included in the script.</dd>
+<dd>The PySCF input to calculate the integrals is already included in the script.</dd>
 </dl>
 <p><tt class="xref py py-attr docutils literal"><span class="pre">hubbard_1d</span></tt>: It dumps 1 and 2-electron integrals got the 1D Hubbard model.</p>
 <blockquote>
 <div><p><strong>Example</strong>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PYQCTools.Integrals_dump</span> <span class="kn">import</span> <span class="n">hubbard_1d</span>
 
-<span class="n">hubbard_1d</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">nsites</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
+<span class="n">hubbard_1d</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">nsites</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">pbc</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><tt class="xref py py-attr docutils literal"><span class="pre">nsites</span></tt>: Number of sites, <tt class="xref py py-attr docutils literal"><span class="pre">t</span></tt>: Hopping constant, <tt class="xref py py-attr docutils literal"><span class="pre">U</span></tt>: Coupling constant, <tt class="xref py py-attr docutils literal"><span class="pre">output</span></tt>: Output file name.</p>
+<p><tt class="xref py py-attr docutils literal"><span class="pre">nsites</span></tt>: Number of sites, <tt class="xref py py-attr docutils literal"><span class="pre">t</span></tt>: Hopping constant, <tt class="xref py py-attr docutils literal"><span class="pre">U</span></tt>: Coupling constant, <tt class="xref py py-attr docutils literal"><span class="pre">output</span></tt>: Output file name, <tt class="xref py py-attr docutils literal"><span class="pre">pbc</span></tt>: &#8216;True&#8217; of &#8216;False&#8217; respectively if periodic boudary conditions need to be included or not.</p>
 </div></blockquote>
+<dl class="docutils">
+<dt><tt class="xref py py-attr docutils literal"><span class="pre">MPSPT_integrals.py</span></tt>: It dumps the DYALL and PERTURB files to run NEVPT2 calculations by MPS-PT using the BLOCK Code for DMRG.</dt>
+<dd>Integrals are dumped in FCIDUMP format.
+The PySCF input to calculate the integrals is already included in the script.</dd>
+</dl>
 </div>
 
 

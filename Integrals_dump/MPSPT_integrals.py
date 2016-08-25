@@ -63,7 +63,7 @@ def writeh1e_sym(h1e,f,reorder,tol):
                 print >>f, ' % .12e  %3d  %3d  %3d  %3d' % (h1e[i,j], reorder[0][i]+1, reorder[1][j]+1, 0, 0)
 
 
-def dyall_perturb(mc, orbsym, perm_symm = True, nevpt_class = 'all'):
+def dyall_perturb(mc, orbsym, nevpt_class = None):
     from pyscf import fci
     from pyscf import mcscf
 
@@ -75,37 +75,54 @@ def dyall_perturb(mc, orbsym, perm_symm = True, nevpt_class = 'all'):
     h2e = h2e.reshape(mc.ncas,mc.ncas,mc.ncas,mc.ncas)
     h1e,energy_core = mc.h1e_for_cas()
     energy_core += mc.mol.energy_nuc()
-    h2e_Sr = ao2mo.incore.general(mc._scf._eri,[mo_virt,mo_cas,mo_cas,mo_cas],compact=False)
-    h2e_Sr = h2e_Sr.reshape(mo_virt.shape[1],mc.ncas,mc.ncas,mc.ncas)
-    h2e_Si = ao2mo.incore.general(mc._scf._eri,[mo_cas,mo_core,mo_cas,mo_cas],compact=False)
-    h2e_Si = h2e_Si.reshape(mc.ncas,mc.ncore,mc.ncas,mc.ncas)
+
+    #Calcolate two-electron integrals for the (0) class
     h2e_Sijrs = ao2mo.incore.general(mc._scf._eri,[mo_virt,mo_core,mo_virt,mo_core],compact=False)
     h2e_Sijrs = h2e_Sijrs.reshape(mo_virt.shape[1],mc.ncore,mo_virt.shape[1],mc.ncore)
 
+    #Calcolate two-electron integrals for the (+1) class
     h2e_Sijr = ao2mo.incore.general(mc._scf._eri,[mo_virt,mo_core,mo_cas,mo_core],compact=False)
     h2e_Sijr = h2e_Sijr.reshape(mo_virt.shape[1],mc.ncore,mc.ncas,mc.ncore)
-    h2e_Sijr1 = ao2mo.incore.general(mc._scf._eri,[mo_virt,mo_cas,mo_core,mo_core],compact=False)
-    h2e_Sijr1 = h2e_Sijr1.reshape(mo_virt.shape[1],mc.ncas,mc.ncore,mc.ncore)
 
+    #Calcolate two-electron integrals for the (-1) class
     h2e_Srsi = ao2mo.incore.general(mc._scf._eri,[mo_virt,mo_core,mo_virt,mo_cas],compact=False)
     h2e_Srsi = h2e_Srsi.reshape(mo_virt.shape[1],mc.ncore,mo_virt.shape[1],mc.ncas)
-    h2e_Srs = ao2mo.incore.general(mc._scf._eri,[mo_virt,mo_cas,mo_virt,mo_cas],compact=False)
-    h2e_Srs = h2e_Srs.reshape(mo_virt.shape[1],mc.ncas,mo_virt.shape[1],mc.ncas)
+
+    #Calcolate two-electron integrals for the (+2) class
     h2e_Sij = ao2mo.incore.general(mc._scf._eri,[mo_cas,mo_core,mo_cas,mo_core],compact=False)
     h2e_Sij = h2e_Sij.reshape(mc.ncas,mc.ncore,mc.ncas,mc.ncore)
+
+    #Calcolate two-electron integrals for the (-2) class
+    h2e_Srs = ao2mo.incore.general(mc._scf._eri,[mo_virt,mo_cas,mo_virt,mo_cas],compact=False)
+    h2e_Srs = h2e_Srs.reshape(mo_virt.shape[1],mc.ncas,mo_virt.shape[1],mc.ncas)
+
+    #Calcolate two-electron integrals for the (0') class
     h2e_Sir1 = ao2mo.incore.general(mc._scf._eri,[mo_virt,mo_core,mo_cas,mo_cas],compact=False)
     h2e_Sir1 = h2e_Sir1.reshape(mo_virt.shape[1],mc.ncore,mc.ncas,mc.ncas)
     h2e_Sir2 = ao2mo.incore.general(mc._scf._eri,[mo_virt,mo_cas,mo_cas,mo_core],compact=False)
     h2e_Sir2 = h2e_Sir2.reshape(mo_virt.shape[1],mc.ncas,mc.ncas,mc.ncore)
-    
+
+    #Calcolate two-electron integrals for the (+1') class
+    h2e_Si = ao2mo.incore.general(mc._scf._eri,[mo_cas,mo_core,mo_cas,mo_cas],compact=False)
+    h2e_Si = h2e_Si.reshape(mc.ncas,mc.ncore,mc.ncas,mc.ncas)
+
+    #Calcolate two-electron integrals for the (-1') class
+    h2e_Sr = ao2mo.incore.general(mc._scf._eri,[mo_virt,mo_cas,mo_cas,mo_cas],compact=False)
+    h2e_Sr = h2e_Sr.reshape(mo_virt.shape[1],mc.ncas,mc.ncas,mc.ncas)
 
     nelec = mc.nelecas[0] + mc.nelecas[1]
    
     core_dm = numpy.dot(mo_core,mo_core.T) *2
     core_vhf = mc.get_veff(mc.mol,core_dm)
-    h1e_Sr =  reduce(numpy.dot, (mo_virt.T,mc.get_hcore()+core_vhf , mo_cas))
-    h1e_Si =  reduce(numpy.dot, (mo_cas.T, mc.get_hcore()+core_vhf , mo_core))
+
+    #Calcolate one-electron integrals for the (0') class
     h1e_Sir = reduce(numpy.dot, (mo_virt.T,mc.get_hcore()+core_vhf,mo_core))
+
+    #Calcolate one-electron integrals for the (+1') class
+    h1e_Si =  reduce(numpy.dot, (mo_cas.T, mc.get_hcore()+core_vhf , mo_core))
+
+    #Calcolate one-electron integrals for the (-1') class
+    h1e_Sr =  reduce(numpy.dot, (mo_virt.T,mc.get_hcore()+core_vhf , mo_cas))
 
     #Calculate orbital energies in the outer space to build the Dyall Hamiltonian
     #FIXME
@@ -136,33 +153,39 @@ def dyall_perturb(mc, orbsym, perm_symm = True, nevpt_class = 'all'):
 
     cas_order_init = [x - ncore for x in cas_order]
 
+    #Set permutational symmetry
+    perm_symm = True    
+    if (nevpt_class != None):
+       perm_symm = False
+
     #Dump the Total FCIDUMP files as a perturber for all the NEVPT2 Classes
     h2e_all = ao2mo.incore.general(mc._scf._eri,[mc.mo_coeff,mc.mo_coeff,mc.mo_coeff,mc.mo_coeff],compact=False)
     h2e_all = h2e_all.reshape(ncore+ncas+nvirt,ncore+ncas+nvirt,ncore+ncas+nvirt,ncore+ncas+nvirt)
     h1e_all = reduce(numpy.dot, (mc.mo_coeff.T,mc.get_hcore(), mc.mo_coeff))
 
-    f = open('PERTURB_TOT','w')
-    print >>f, ' &FCI NORB=',ncore+ncas+nvirt,', NELEC= ', nelec, ' ,MS2= ',0,','
-    f.write(' ORBSYM=')
-    for i in xrange(ncore+ncas+nvirt):
-        f.write("%d," % orbsym[i])
-    f.write('\n')
-    print >>f, ' &END'
-    #h2e in active space
-    if (perm_symm == False):
-       writeh2e(h2e_all,f,(reorder,reorder,reorder,reorder),tol)
-    else:
-       writeh2e_sym(h2e_all,f,(reorder,reorder,reorder,reorder),tol)
-    #h1e in active space
-    if (perm_symm == False):
-       writeh1e(h1e_all,f,(reorder,reorder),tol)
-    else:
-       writeh1e_sym(h1e_all,f,(reorder,reorder),tol)
-    f.close()
+    if (nevpt_class == None):
+        f = open('PERTURB_TOT','w')
+        print >>f, ' &FCI NORB=',ncore+ncas+nvirt,', NELEC= ', mc.mol.nelectron, ' ,MS2= ',0,','
+        f.write(' ORBSYM=')
+        for i in xrange(ncore+ncas+nvirt):
+            f.write("%d," % orbsym[i])
+        f.write('\n')
+        print >>f, ' &END'
+        #h2e in active space
+        if (perm_symm == False):
+           writeh2e(h2e_all,f,(reorder,reorder,reorder,reorder),tol)
+        else:
+           writeh2e_sym(h2e_all,f,(reorder,reorder,reorder,reorder),tol)
+        #h1e in active space
+        if (perm_symm == False):
+           writeh1e(h1e_all,f,(reorder,reorder),tol)
+        else:
+           writeh1e_sym(h1e_all,f,(reorder,reorder),tol)
+        f.close()
 
     #Dump the integrals for DYALL hamiltonian
     f = open('DYALL','w')
-    print >>f, ' &FCI NORB=',ncore+ncas+nvirt,', NELEC= ', nelec, ' ,MS2= ',0,',' 
+    print >>f, ' &FCI NORB=',ncore+ncas+nvirt,', NELEC= ', mc.mol.nelectron, ' ,MS2= ',0,',' 
     f.write(' ORBSYM=')
     for i in xrange(ncore+ncas+nvirt):
         f.write("%d," % orbsym[i])
@@ -188,42 +211,51 @@ def dyall_perturb(mc, orbsym, perm_symm = True, nevpt_class = 'all'):
     print >> f, C,0,0,0,0
     f.close()
 
-    #f = open('PERTURB','w')
-    #print >>f, ' &FCI NORB=',ncore+ncas+nvirt,', NELEC= ', nelec, ' ,MS2= ',0,','
-    #f.write(' ORBSYM=')
-    #for i in xrange(ncore+ncas+nvirt):
-    #    f.write("%d," % orbsym[i])
-    #f.write('\n')
-    #print >>f, ' &END'
-    #if (nevpt_class == "all" or nevpt_class == "0"): 
-    #writeh2e(h2e_Sijrs,f,(virt_order,core_order,virt_order,core_order),tol)
-    #if (nevpt_class == "all" or nevpt_class == "+1"): 
-    #writeh2e(h2e_Sijr,f,(virt_order,core_order,cas_order,core_order),tol)
-    #writeh2e(h2e_Sijr1,f,(virt_order,cas_order,core_order,core_order),tol)
+    if (nevpt_class != None):
+        f = open('PERTURB','w')
+        print >>f, ' &FCI NORB=',ncore+ncas+nvirt,', NELEC= ', mc.mol.nelectron, ' ,MS2= ',0,','
+        f.write(' ORBSYM=')
+        for i in xrange(ncore+ncas+nvirt):
+            f.write("%d," % orbsym[i])
+        f.write('\n')
+        print >>f, ' &END'
+        if (nevpt_class == "0"): 
+           writeh2e(h2e_Sijrs,f,(virt_order,core_order,virt_order,core_order),tol)
+ 
+        if (nevpt_class == "+1"): 
+           writeh2e(h2e_Sijr,f,(virt_order,core_order,cas_order,core_order),tol)
+ 
+        if (nevpt_class == "-1"): 
+           writeh2e(h2e_Srsi,f,(virt_order,core_order,virt_order,cas_order),tol)
+ 
+        if (nevpt_class == "+2"): 
+           writeh2e(h2e_Sij,f,(cas_order,core_order,cas_order,core_order),tol)
+ 
+        if (nevpt_class == "-2"): 
+           writeh2e(h2e_Srs,f,(virt_order,cas_order,virt_order,cas_order),tol)
+ 
+        if (nevpt_class == "0p"): 
+           writeh2e(h2e_Sir1,f,(virt_order,core_order,cas_order,cas_order),tol)
+           writeh2e(h2e_Sir2,f,(virt_order,cas_order,cas_order,core_order),tol)
+ 
+        if (nevpt_class == "+1p"): 
+           writeh2e(h2e_Si,f,(cas_order,core_order,cas_order,cas_order),tol)
+ 
+        if (nevpt_class == "-1p"): 
+           writeh2e(h2e_Sr,f,(virt_order,cas_order,cas_order,cas_order),tol)
+ 
+        if (nevpt_class == "0p"): 
+           writeh1e(h1e_Sir,f,(virt_order,core_order),tol)
+ 
+        if (nevpt_class == "+1p"): 
+           writeh1e(h1e_Si,f,(cas_order,core_order),tol)
+ 
+        if (nevpt_class == "-1p"): 
+           writeh1e(h1e_Sr,f,(virt_order,cas_order),tol)
 
-    #if (nevpt_class == "all" or nevpt_class == "-1"): 
-    #writeh2e(h2e_Srsi,f,(virt_order,core_order,virt_order,cas_order),tol)
-    #if (nevpt_class == "all" or nevpt_class == "+2"): 
-    #writeh2e(h2e_Sij,f,(cas_order,core_order,cas_order,core_order),tol)
-    #if (nevpt_class == "all" or nevpt_class == "-2"): 
-    #writeh2e(h2e_Srs,f,(virt_order,cas_order,virt_order,cas_order),tol)
-    #if (nevpt_class == "all" or nevpt_class == "0p"): 
-    #writeh2e(h2e_Sir1,f,(virt_order,core_order,cas_order,cas_order),tol)
-    #writeh2e(h2e_Sir2,f,(virt_order,cas_order,cas_order,core_order),tol)
-    #if (nevpt_class == "all" or nevpt_class == "+1p"): 
-    #writeh2e(h2e_Si,f,(cas_order,core_order,cas_order,cas_order),tol)
-    #if (nevpt_class == "all" or nevpt_class == "-1p"): 
-    #writeh2e(h2e_Sr,f,(virt_order,cas_order,cas_order,cas_order),tol)
-    #if (nevpt_class == "all" or nevpt_class == "0p"): 
-    #writeh1e(h1e_Sir,f,(virt_order,core_order),tol)
-    #if (nevpt_class == "all" or nevpt_class == "+1p"): 
-    #writeh1e(h1e_Si,f,(cas_order,core_order),tol)
-    #if (nevpt_class == "all" or nevpt_class == "-1p"): 
-    #writeh1e(h1e_Sr,f,(virt_order,cas_order),tol)
-
-    #writeh2e_sym(h2e_all,f,(reorder,reorder,reorder,reorder),tol)
-
-    #f.close()
+        print "Remember to switch off permutational symmetry and screening in Block" 
+ 
+        f.close()
 
 
 
@@ -271,10 +303,7 @@ if __name__ == '__main__':
     #print 'CI energy', ci_e
     mc.casci()
 
-    perm_symm = True
+    nevpt_class = '-1p'
 
-    dyall_perturb(mc, orbsym, perm_symm)
-    nevpt2.NEVPT(mc).kernel()
-    
-
-
+    dyall_perturb(mc, orbsym, nevpt_class)
+    #nevpt2.NEVPT(mc).kernel()

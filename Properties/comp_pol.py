@@ -78,12 +78,12 @@ def run(r, N):
     
     
 
-start = 1
-stop = 100
+start = 100
+stop = 1
 
 for i in range(start, stop, -1):
     r = 0.1*i
-    N = 10
+    N = 50
     #print "R = ", r, " ang"
     run(r, N)
 

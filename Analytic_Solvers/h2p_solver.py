@@ -107,7 +107,7 @@ def newton_ang_func(L_val,c2,m):
  
    return  z[:,1][-1]
 
-def R_xi(E_vec):
+def R_xi(E_vec,L0):
     
    traj = np.zeros([x_rad.shape[0]+1,E_vec.shape[0]])
 
@@ -116,7 +116,7 @@ def R_xi(E_vec):
 
       c2 = D*D*E/4.
 
-      L = newton(newton_ang_func,-1.8,args=(c2,m),tol=1e-8,maxiter=200)
+      L = newton(newton_ang_func,L0,args=(c2,m),tol=1e-8,maxiter=200)
 
       slope = -(-L+m*(m+1.)+2.*D+c2)/(2.*(m+1.))
       z0 = [1+step*slope,slope]
@@ -151,13 +151,13 @@ def R_xi(E_vec):
    plt.show()
    plt.close()
 
-def newton_rad_func(E_val,D,m):
+def newton_rad_func(E_val,D,m,L0):
 
    E = E_val
 
    c2 = D*D*E/4.
 
-   L = newton(newton_ang_func,-1.8,args=(c2,m),tol=1e-8,maxiter=200)
+   L = newton(newton_ang_func,L0,args=(c2,m),tol=1e-8,maxiter=500)
 
    slope = -(-L+m*(m+1.)+2.*D+c2)/(2.*(m+1.))
 
@@ -175,10 +175,32 @@ def newton_rad_func(E_val,D,m):
 
    return z[:,1][-1]
 
+def L_calc(E_val,D,m,L0):
+   E = E_val
+   c2 = D*D*E/4.
+   L = newton(newton_ang_func,L0,args=(c2,m),tol=1e-8,maxiter=500)
+   return L
+
+def pes(D_vec,m,L0,E_start):
+
+   PES = np.zeros((D_vec.shape[0],D_vec.shape[0]))
+   i = 0
+   for D in D_vec:    
+     E_elec = newton(newton_rad_func,E_start,args=(D,m,L0),tol=1e-8,maxiter=200)
+     L0 = L_calc(E_elec,D,m,L0)
+     E_nuc = 2./D
+     E_start = E_elec
+     PES[i][0] = D
+     PES[i][1] = E_elec+E_nuc
+     print PES[i][0], PES[i][1]
+     i += 1
+   
+   return PES
+
 
 if __name__ == '__main__':
 
-   D = 2.0
+   #D = 1.4
    m=0
 
    step = 0.001
@@ -191,15 +213,20 @@ if __name__ == '__main__':
    #S_eta(L_vec, -4)
 
    ##Radial Part R-xi plot generator
-   #E_vec = np.array([-2.1,-2.2,-2.202,-2.205,-2.3])
-   #R_xi(E_vec)
+   #E_vec = np.array([-2.3,-2.5,-2.6,-2.7])
+   #R_xi(E_vec,-1.8)
 
    ##Calculation of the electronic energy
-   E_elec = newton(newton_rad_func,-2.2,args=(D,m),tol=1e-8,maxiter=200)
+   #E_elec = newton(newton_rad_func,-2.5,args=(D,m,-1.8),tol=1e-8,maxiter=200)
 
    ##Calculation of the nuclear energy
-   E_nuc = 2./D
+   #E_nuc = 2./D
 
    ##Calculation of the total energy
-   E_tot = E_elec+E_nuc
-   print "The Total Energy is:", E_tot, "Ryd"
+   #E_tot = E_elec+E_nuc
+   #print "The Total Energy is:", E_tot, "Ryd"
+
+   ##Calculate PES 
+   D_vec = np.arange(1.0,40.0, 0.1)
+   PES = pes(D_vec,m,-1.8,-2.5)
+   #print PES

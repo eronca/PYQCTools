@@ -69,8 +69,8 @@ def S_eta(L_vec, c2_val):
    plt.plot(x_tot,traj, linewidth=2.0, label = '')
    plt.ylabel('S($\\eta$)')#, fontdict=font)
    plt.xlabel('$\\eta$')#, fontdict=font)
-   plt.xlim(-1.0,1.0)
-   plt.ylim(0.3,1.0)
+   #plt.xlim(-1.0,1.0)
+   #plt.ylim(0.3,1.0)
    plt.locator_params(axis='x', nbins=10)
    plt.locator_params(axis='y', nbins=10)
    plt.tick_params(axis='x', pad=15)
@@ -141,8 +141,8 @@ def R_xi(E_vec,L0):
    plt.plot(xt,traj, linewidth=2.0, label = '')
    plt.ylabel('R($\\xi$)')#, fontdict=font)
    plt.xlabel('$\\xi$')#, fontdict=font)
-   plt.xlim(1.0,10.0)
-   plt.ylim(-1.0,1.0)
+   #plt.xlim(1.0,10.0)
+   #plt.ylim(-1.0,1.0)
    plt.locator_params(axis='x', nbins=10)
    plt.locator_params(axis='y', nbins=10)
    plt.tick_params(axis='x', pad=15)
@@ -183,7 +183,7 @@ def L_calc(E_val,D,m,L0):
 
 def pes(D_vec,m,L0,E_start):
 
-   PES = np.zeros((D_vec.shape[0],D_vec.shape[0]))
+   PES = np.zeros((D_vec.shape[0],2))
    i = 0
    for D in D_vec:    
      E_elec = newton(newton_rad_func,E_start,args=(D,m,L0),tol=1e-8,maxiter=200)
@@ -192,7 +192,6 @@ def pes(D_vec,m,L0,E_start):
      E_start = E_elec
      PES[i][0] = D
      PES[i][1] = E_elec+E_nuc
-     print PES[i][0], PES[i][1]
      i += 1
    
    return PES
@@ -200,7 +199,7 @@ def pes(D_vec,m,L0,E_start):
 
 if __name__ == '__main__':
 
-   #D = 1.4
+   D = 2
    m=0
 
    step = 0.001
@@ -210,10 +209,11 @@ if __name__ == '__main__':
 
    ##Angular Part S-eta plot generator
    #L_vec = np.array([-1.8, -1.7, -1.6, -1.59449, -1.5, -1.4])
+   #L_vec = np.array([-0.5,-0.1,0.0,1.0, 1.02])
    #S_eta(L_vec, -4)
 
    ##Radial Part R-xi plot generator
-   #E_vec = np.array([-2.3,-2.5,-2.6,-2.7])
+   #E_vec = np.array([-1.8])
    #R_xi(E_vec,-1.8)
 
    ##Calculation of the electronic energy
@@ -227,6 +227,7 @@ if __name__ == '__main__':
    #print "The Total Energy is:", E_tot, "Ryd"
 
    ##Calculate PES 
-   D_vec = np.arange(1.0,40.0, 0.1)
+   D_vec = np.arange(1.0,30.0, 0.1)
    PES = pes(D_vec,m,-1.8,-2.5)
-   #print PES
+   np.savetxt('pes', PES)
+
